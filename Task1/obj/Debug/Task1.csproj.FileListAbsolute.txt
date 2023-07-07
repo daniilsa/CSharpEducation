@@ -1,0 +1,6 @@
+S:\Directum\CSharpEducation\CSharpEducation\Task1\bin\Debug\Task1.exe.config
+S:\Directum\CSharpEducation\CSharpEducation\Task1\bin\Debug\Task1.exe
+S:\Directum\CSharpEducation\CSharpEducation\Task1\bin\Debug\Task1.pdb
+S:\Directum\CSharpEducation\CSharpEducation\Task1\obj\Debug\Task1.csprojAssemblyReference.cache
+S:\Directum\CSharpEducation\CSharpEducation\Task1\obj\Debug\Task1.exe
+S:\Directum\CSharpEducation\CSharpEducation\Task1\obj\Debug\Task1.pdb
