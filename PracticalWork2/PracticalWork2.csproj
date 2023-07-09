@@ -33,8 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Librarys">
-      <HintPath>..\Help\bin\Debug\netstandard2.0\Librarys.dll</HintPath>
+    <Reference Include="Librarys, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Librarys\bin\Debug\netstandard2.0\Librarys.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

@@ -186,11 +186,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "S:\\Directum\\CSharpEducation\\PersonLibrary\\PersonLibrary.csproj",
-      "projectName": "PersonLibrary",
-      "projectPath": "S:\\Directum\\CSharpEducation\\PersonLibrary\\PersonLibrary.csproj",
+      "projectUniqueName": "S:\\Directum\\CSharpEducation\\Librarys\\Librarys.csproj",
+      "projectName": "Librarys",
+      "projectPath": "S:\\Directum\\CSharpEducation\\Librarys\\Librarys.csproj",
       "packagesPath": "C:\\Users\\Daniil\\.nuget\\packages\\",
-      "outputPath": "S:\\Directum\\CSharpEducation\\PersonLibrary\\obj\\",
+      "outputPath": "S:\\Directum\\CSharpEducation\\Librarys\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "S:\\Microsoft\\Xamarin\\NuGet\\"

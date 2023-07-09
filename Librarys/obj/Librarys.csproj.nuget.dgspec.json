@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "S:\\Directum\\CSharpEducation\\Help\\Librarys.csproj": {}
+    "S:\\Directum\\CSharpEducation\\Librarys\\Librarys.csproj": {}
   },
   "projects": {
-    "S:\\Directum\\CSharpEducation\\Help\\Librarys.csproj": {
+    "S:\\Directum\\CSharpEducation\\Librarys\\Librarys.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "S:\\Directum\\CSharpEducation\\Help\\Librarys.csproj",
+        "projectUniqueName": "S:\\Directum\\CSharpEducation\\Librarys\\Librarys.csproj",
         "projectName": "Librarys",
-        "projectPath": "S:\\Directum\\CSharpEducation\\Help\\Librarys.csproj",
+        "projectPath": "S:\\Directum\\CSharpEducation\\Librarys\\Librarys.csproj",
         "packagesPath": "C:\\Users\\Daniil\\.nuget\\packages\\",
-        "outputPath": "S:\\Directum\\CSharpEducation\\Help\\obj\\",
+        "outputPath": "S:\\Directum\\CSharpEducation\\Librarys\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "S:\\Microsoft\\Xamarin\\NuGet\\"

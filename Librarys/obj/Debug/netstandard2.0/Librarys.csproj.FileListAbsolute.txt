@@ -1,0 +1,15 @@
+S:\Directum\CSharpEducation\Help\bin\Debug\netstandard2.0\Librarys.deps.json
+S:\Directum\CSharpEducation\Help\bin\Debug\netstandard2.0\Librarys.dll
+S:\Directum\CSharpEducation\Help\bin\Debug\netstandard2.0\Librarys.pdb
+S:\Directum\CSharpEducation\Help\obj\Debug\netstandard2.0\Librarys.AssemblyInfoInputs.cache
+S:\Directum\CSharpEducation\Help\obj\Debug\netstandard2.0\Librarys.AssemblyInfo.cs
+S:\Directum\CSharpEducation\Help\obj\Debug\netstandard2.0\Librarys.dll
+S:\Directum\CSharpEducation\Help\obj\Debug\netstandard2.0\Librarys.pdb
+S:\Directum\CSharpEducation\Librarys\bin\Debug\netstandard2.0\Librarys.deps.json
+S:\Directum\CSharpEducation\Librarys\bin\Debug\netstandard2.0\Librarys.dll
+S:\Directum\CSharpEducation\Librarys\bin\Debug\netstandard2.0\Librarys.pdb
+S:\Directum\CSharpEducation\Librarys\obj\Debug\netstandard2.0\Librarys.csprojAssemblyReference.cache
+S:\Directum\CSharpEducation\Librarys\obj\Debug\netstandard2.0\Librarys.AssemblyInfoInputs.cache
+S:\Directum\CSharpEducation\Librarys\obj\Debug\netstandard2.0\Librarys.AssemblyInfo.cs
+S:\Directum\CSharpEducation\Librarys\obj\Debug\netstandard2.0\Librarys.dll
+S:\Directum\CSharpEducation\Librarys\obj\Debug\netstandard2.0\Librarys.pdb

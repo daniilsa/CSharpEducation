@@ -164,8 +164,6 @@ namespace PracticalWork2
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\r\nЗадание 14.");
-            int a = 5;
-            int b = 4;
             PersonLibrary.Person person = new PersonLibrary.Person();
             person.GetInfo();
         }

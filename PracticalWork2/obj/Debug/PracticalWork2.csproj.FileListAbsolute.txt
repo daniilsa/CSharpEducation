@@ -5,5 +5,5 @@ S:\Directum\CSharpEducation\PracticalWork2\bin\Debug\PracticalWork2.pdb
 S:\Directum\CSharpEducation\PracticalWork2\obj\Debug\PracticalWork2.exe
 S:\Directum\CSharpEducation\PracticalWork2\obj\Debug\PracticalWork2.pdb
 S:\Directum\CSharpEducation\PracticalWork2\obj\Debug\PracticalWork2.csproj.CopyComplete
-S:\Directum\CSharpEducation\PracticalWork2\bin\Debug\Librarys.dll
 S:\Directum\CSharpEducation\PracticalWork2\bin\Debug\Librarys.pdb
+S:\Directum\CSharpEducation\PracticalWork2\bin\Debug\Librarys.dll
