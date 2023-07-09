@@ -1,6 +1,0 @@
-S:\Directum\CSharpEducation\PracticalWork1\obj\Debug\PracticalWork1.csprojAssemblyReference.cache
-S:\Directum\CSharpEducation\PracticalWork1\bin\Debug\PracticalWork1.exe.config
-S:\Directum\CSharpEducation\PracticalWork1\bin\Debug\PracticalWork1.exe
-S:\Directum\CSharpEducation\PracticalWork1\bin\Debug\PracticalWork1.pdb
-S:\Directum\CSharpEducation\PracticalWork1\obj\Debug\PracticalWork1.exe
-S:\Directum\CSharpEducation\PracticalWork1\obj\Debug\PracticalWork1.pdb
