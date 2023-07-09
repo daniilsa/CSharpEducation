@@ -1,0 +1,9 @@
+S:\Directum\CSharpEducation\PracticalWork2\obj\Debug\PracticalWork2.csprojAssemblyReference.cache
+S:\Directum\CSharpEducation\PracticalWork2\bin\Debug\PracticalWork2.exe.config
+S:\Directum\CSharpEducation\PracticalWork2\bin\Debug\PracticalWork2.exe
+S:\Directum\CSharpEducation\PracticalWork2\bin\Debug\PracticalWork2.pdb
+S:\Directum\CSharpEducation\PracticalWork2\obj\Debug\PracticalWork2.exe
+S:\Directum\CSharpEducation\PracticalWork2\obj\Debug\PracticalWork2.pdb
+S:\Directum\CSharpEducation\PracticalWork2\obj\Debug\PracticalWork2.csproj.CopyComplete
+S:\Directum\CSharpEducation\PracticalWork2\bin\Debug\Librarys.dll
+S:\Directum\CSharpEducation\PracticalWork2\bin\Debug\Librarys.pdb
