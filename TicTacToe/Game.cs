@@ -11,23 +11,72 @@ namespace TicTacToe
     /// </summary>
     class Game
     {
-        #region [ ПЕРЕМЕННЫЕ ]
-        // Создадим массив ходов (поле 3 на 3).
-        char[,] charArrMoves = new char[3, 3];
-        // Переменная, отвечающая за код игрока
-        // true - ход крестиком
-        // false - ход ноликом
-        bool boolActiveMove = true;
-        // Переменная для остановки игры
-        bool boolFinishGame = false;
-        // Переменная для начала новой игры
-        bool boolStartGame = true;
-        // Игровое поле
-        string[] stringArrPlayingField = new string[9];
-        // Победные координаты
-        char charWin = ' ';
+        #region Константы
+        /// <summary>
+        ///  X - Ход со стороны крестиков
+        /// </summary>
+        private const char crossMove = 'X';
+
+        /// <summary>
+        ///  O - Ход со стороны ноликов
+        /// </summary>
+        private const char zeroMove = 'O';
+
+        /// <summary>
+        ///  W(winning) - Победа одной из сторон
+        /// </summary>
+        private const char winning = 'W';
+
+        /// <summary>
+        ///  D(draw) - Ничья
+        /// </summary>
+        private const char draw = 'D';
+
+        /// <summary>
+        ///  F(false) - На данный момент никто не победил
+        /// </summary>
+        private const char resume = 'R';
+        #endregion
+  
+        #region Поля
+        /// <summary>
+        /// Массив ходов (поле 3 на 3).
+        /// </summary>
+        private char[,] arrMoves = new char[3, 3];
+
+        /// <summary>
+        /// Ход игрока
+        /// true - ход крестиком
+        /// false - ход ноликом
+        /// </summary>
+        private bool boolActiveMove = true;
+
+        /// <summary>
+        /// Остановка игры
+        /// true - Подведение результатов
+        /// false - Продолжение игры
+        /// </summary>
+        private bool boolFinishGame = false;
+
+        /// <summary>
+        /// Начало новой игры
+        /// true - Начатть новую игру
+        /// false - Выход из программы
+        /// </summary>
+        private bool boolStartGame = true;
+
+        /// <summary>
+        /// Игровое поле
+        /// </summary>
+        private string[] stringArrPlayingField = new string[9];
+
+        /// <summary>
+        /// Символ игрока, который победил
+        /// </summary>
+        private char charWin = ' ';
         #endregion
 
+        #region Методы
         /// <summary>
         /// Начало игры
         /// </summary>
@@ -35,13 +84,12 @@ namespace TicTacToe
         {
             while (boolStartGame)
             {
-
                 boolFinishGame = false;
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
                 DefaultSettings();
                 PlayingField();
-                ChoosingAMove();
+                ChoosingMove();
             }
         }
         /// <summary>
@@ -54,7 +102,7 @@ namespace TicTacToe
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    charArrMoves[i, j] = ' ';
+                    arrMoves[i, j] = ' ';
                 }
             }
             // Переход хода крестикам
@@ -63,26 +111,25 @@ namespace TicTacToe
         /// <summary>
         /// Выбор хода
         /// </summary>
-        private void ChoosingAMove()
+        private void ChoosingMove()
         {
             while (!boolFinishGame)
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Выберите строку и столбец для хода (через пробел от 1 до 3)");
-                string str = Console.ReadLine();
                 try
                 {
-                    int x = (str[0] - '0') - 1;
-                    int y = (str[2] - '0') - 1;
+                    Console.Write("Выберите строку (от 1 до 3): ");
+                    int x = Convert.ToInt32(Console.ReadLine()) - 1;
+                    Console.Write("Выберите столбец (от 1 до 3): ");
+                    int y = Convert.ToInt32(Console.ReadLine()) - 1;
 
-                    if (charArrMoves[x, y] == ' ')
+                    if (arrMoves[x, y] == ' ')
                     {
-                        if (boolActiveMove) charArrMoves[x, y] = 'X';
-                        else charArrMoves[x, y] = 'O';
+                        if (boolActiveMove) arrMoves[x, y] = crossMove;
+                        else arrMoves[x, y] = zeroMove;
                         boolActiveMove = !boolActiveMove;
                         PlayingField();
                     }
-
                     else
                     {
 
@@ -97,11 +144,26 @@ namespace TicTacToe
                     Console.WriteLine("Координата введена неверно");
                 }
 
-                if (CheckFinishGame() == 'X') { Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("Победа крестиков!"); boolFinishGame = true; }
-                else if (CheckFinishGame() == 'O') { Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("Победа ноликов!"); boolFinishGame = true; }
-                else if (CheckFinishGame() == 'D') { Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("Победила дружба!"); boolFinishGame = true; }
+                if (CheckFinishGame() == crossMove)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Победа крестиков!");
+                    boolFinishGame = true;
+                }
+                else if (CheckFinishGame() == zeroMove)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Победа ноликов!");
+                    boolFinishGame = true;
+                }
+                else if (CheckFinishGame() == draw)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Победила дружба!");
+                    boolFinishGame = true;
+                }
             }
-            RetutnGame();
+            ReturnOrExitGame();
         }
         /// <summary>
         /// Проверка конца игры
@@ -115,16 +177,64 @@ namespace TicTacToe
         private char CheckFinishGame()
         {
             // Проверка строк
-            if (charArrMoves[0, 0] != ' ' && charArrMoves[0, 0] == charArrMoves[0, 1] && charArrMoves[0, 0] == charArrMoves[0, 2])/*  */{ charWin = charArrMoves[0, 0]; charArrMoves[0, 0] = charArrMoves[0, 1] = charArrMoves[0, 2] = 'W'; PlayingField(); return charWin; }
-            else if (charArrMoves[1, 0] != ' ' && charArrMoves[1, 0] == charArrMoves[1, 1] && charArrMoves[1, 0] == charArrMoves[1, 2]) { charWin = charArrMoves[1, 0]; charArrMoves[1, 0] = charArrMoves[1, 1] = charArrMoves[1, 2] = 'W'; PlayingField(); return charWin; }
-            else if (charArrMoves[2, 0] != ' ' && charArrMoves[2, 0] == charArrMoves[2, 1] && charArrMoves[2, 0] == charArrMoves[2, 2]) { charWin = charArrMoves[2, 0]; charArrMoves[2, 0] = charArrMoves[2, 1] = charArrMoves[2, 2] = 'W'; PlayingField(); return charWin; }
-            // Проверка столбцов                                                                                        
-            else if (charArrMoves[0, 0] != ' ' && charArrMoves[0, 0] == charArrMoves[1, 0] && charArrMoves[1, 0] == charArrMoves[2, 0]) { charWin = charArrMoves[0, 0]; charArrMoves[0, 0] = charArrMoves[1, 0] = charArrMoves[2, 0] = 'W'; PlayingField(); return charWin; }
-            else if (charArrMoves[0, 1] != ' ' && charArrMoves[0, 1] == charArrMoves[1, 1] && charArrMoves[1, 1] == charArrMoves[2, 1]) { charWin = charArrMoves[0, 1]; charArrMoves[0, 1] = charArrMoves[1, 1] = charArrMoves[2, 1] = 'W'; PlayingField(); return charWin; }
-            else if (charArrMoves[0, 2] != ' ' && charArrMoves[0, 2] == charArrMoves[1, 2] && charArrMoves[1, 2] == charArrMoves[2, 2]) { charWin = charArrMoves[0, 2]; charArrMoves[0, 2] = charArrMoves[1, 2] = charArrMoves[2, 2] = 'W'; PlayingField(); return charWin; }
-            // Проверка диагоналей                                                                                     
-            else if (charArrMoves[0, 0] != ' ' && charArrMoves[0, 0] == charArrMoves[1, 1] && charArrMoves[1, 1] == charArrMoves[2, 2]) { charWin = charArrMoves[0, 0]; charArrMoves[0, 0] = charArrMoves[1, 1] = charArrMoves[2, 2] = 'W'; PlayingField(); return charWin; }
-            else if (charArrMoves[0, 2] != ' ' && charArrMoves[0, 2] == charArrMoves[1, 1] && charArrMoves[1, 1] == charArrMoves[2, 0]) { charWin = charArrMoves[0, 2]; charArrMoves[0, 2] = charArrMoves[1, 1] = charArrMoves[2, 0] = 'W'; PlayingField(); return charWin; }
+            if (arrMoves[0, 0] != ' ' && arrMoves[0, 0] == arrMoves[0, 1] && arrMoves[0, 0] == arrMoves[0, 2])
+            {
+                charWin = arrMoves[0, 0];
+                arrMoves[0, 0] = arrMoves[0, 1] = arrMoves[0, 2] = winning;
+                PlayingField();
+                return charWin;
+            }
+            else if (arrMoves[1, 0] != ' ' && arrMoves[1, 0] == arrMoves[1, 1] && arrMoves[1, 0] == arrMoves[1, 2])
+            {
+                charWin = arrMoves[1, 0];
+                arrMoves[1, 0] = arrMoves[1, 1] = arrMoves[1, 2] = winning;
+                PlayingField();
+                return charWin;
+            }
+            else if (arrMoves[2, 0] != ' ' && arrMoves[2, 0] == arrMoves[2, 1] && arrMoves[2, 0] == arrMoves[2, 2])
+            {
+                charWin = arrMoves[2, 0];
+                arrMoves[2, 0] = arrMoves[2, 1] = arrMoves[2, 2] = winning;
+                PlayingField();
+                return charWin;
+            }
+            // Проверка столбцов                                                                                                                                                                                                       
+            else if (arrMoves[0, 0] != ' ' && arrMoves[0, 0] == arrMoves[1, 0] && arrMoves[1, 0] == arrMoves[2, 0])
+            {
+                charWin = arrMoves[0, 0];
+                arrMoves[0, 0] = arrMoves[1, 0] = arrMoves[2, 0] = winning;
+                PlayingField();
+                return charWin;
+            }
+            else if (arrMoves[0, 1] != ' ' && arrMoves[0, 1] == arrMoves[1, 1] && arrMoves[1, 1] == arrMoves[2, 1])
+            {
+                charWin = arrMoves[0, 1];
+                arrMoves[0, 1] = arrMoves[1, 1] = arrMoves[2, 1] = winning;
+                PlayingField();
+                return charWin;
+            }
+            else if (arrMoves[0, 2] != ' ' && arrMoves[0, 2] == arrMoves[1, 2] && arrMoves[1, 2] == arrMoves[2, 2])
+            {
+                charWin = arrMoves[0, 2];
+                arrMoves[0, 2] = arrMoves[1, 2] = arrMoves[2, 2] = winning;
+                PlayingField();
+                return charWin;
+            }
+            // Проверка диагоналей                                                                                                                                                                                                    
+            else if (arrMoves[0, 0] != ' ' && arrMoves[0, 0] == arrMoves[1, 1] && arrMoves[1, 1] == arrMoves[2, 2])
+            {
+                charWin = arrMoves[0, 0];
+                arrMoves[0, 0] = arrMoves[1, 1] = arrMoves[2, 2] = winning;
+                PlayingField();
+                return charWin;
+            }
+            else if (arrMoves[0, 2] != ' ' && arrMoves[0, 2] == arrMoves[1, 1] && arrMoves[1, 1] == arrMoves[2, 0])
+            {
+                charWin = arrMoves[0, 2];
+                arrMoves[0, 2] = arrMoves[1, 1] = arrMoves[2, 0] = winning;
+                PlayingField();
+                return charWin;
+            }
             // Проверка на ничью                                                                                                        
             else
             {
@@ -132,32 +242,32 @@ namespace TicTacToe
                 {
                     for (int j = 0; j < 3; j++)
                     {
-                        if (charArrMoves[i, j] == ' ')
+                        if (arrMoves[i, j] == ' ')
                         {
-                            return 'F';
+                            return resume;
                         }
                     }
                 }
             }
-            return 'D';
+            return draw;
         }
         /// <summary>
-        /// Перезапуск игры
+        /// Выбор между перезапускои игры и выходом из игры
         /// </summary>
-        private void RetutnGame()
+        private void ReturnOrExitGame()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Хотите начать сначала? (Y/N)");
             string exitGame = Console.ReadLine();
-            if (exitGame == "N") boolStartGame = false;
-            else if (exitGame == "Y") boolStartGame = true;
+            if (exitGame == "N" || exitGame == "n") boolStartGame = false;
+            else if (exitGame == "Y" || exitGame == "y") boolStartGame = true;
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write("Неизвестный параметр! ");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Попробуйте ещё раз...");
-                RetutnGame();
+                ReturnOrExitGame();
                 return;
             }
         }
@@ -168,13 +278,13 @@ namespace TicTacToe
         {
             Console.Clear();
             stringArrPlayingField[0] = "     |     |      ";
-            stringArrPlayingField[1] = "  " + charArrMoves[0, 0] + "  |  " + charArrMoves[0, 1] + "  |  " + charArrMoves[0, 2];
+            stringArrPlayingField[1] = "  " + arrMoves[0, 0] + "  |  " + arrMoves[0, 1] + "  |  " + arrMoves[0, 2];
             stringArrPlayingField[2] = "_____|_____|_____ ";
             stringArrPlayingField[3] = "     |     |      ";
-            stringArrPlayingField[4] = "  " + charArrMoves[1, 0] + "  |  " + charArrMoves[1, 1] + "  |  " + charArrMoves[1, 2];
+            stringArrPlayingField[4] = "  " + arrMoves[1, 0] + "  |  " + arrMoves[1, 1] + "  |  " + arrMoves[1, 2];
             stringArrPlayingField[5] = "_____|_____|_____ ";
             stringArrPlayingField[6] = "     |     |      ";
-            stringArrPlayingField[7] = "  " + charArrMoves[2, 0] + "  |  " + charArrMoves[2, 1] + "  |  " + charArrMoves[2, 2];
+            stringArrPlayingField[7] = "  " + arrMoves[2, 0] + "  |  " + arrMoves[2, 1] + "  |  " + arrMoves[2, 2];
             stringArrPlayingField[8] = "     |     |      ";
 
             for (int i = 0; i < 9; i++)
@@ -183,11 +293,11 @@ namespace TicTacToe
                 {
                     bool charTemporaryWin = false;
                     Console.ForegroundColor = ConsoleColor.White;
-                    if (stringArrPlayingField[i][j] == 'X')
+                    if (stringArrPlayingField[i][j] == crossMove)
                     {
                         Console.ForegroundColor = ConsoleColor.Blue;
                     }
-                    else if (stringArrPlayingField[i][j] == 'O')
+                    else if (stringArrPlayingField[i][j] == zeroMove)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
                     }
@@ -209,5 +319,6 @@ namespace TicTacToe
                 }
             }
         }
+        #endregion
     }
 }

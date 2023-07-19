@@ -8,6 +8,10 @@ namespace TicTacToe
 {
     class Program
     {
+        /// <summary>
+        /// Метод запуска игры
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             Game game = new Game();
