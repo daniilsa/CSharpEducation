@@ -1,0 +1,8 @@
+S:\Directum\CSharpEducation\Help\bin\Debug\netstandard2.0\Help.deps.json
+S:\Directum\CSharpEducation\Help\bin\Debug\netstandard2.0\Help.dll
+S:\Directum\CSharpEducation\Help\bin\Debug\netstandard2.0\Help.pdb
+S:\Directum\CSharpEducation\Help\obj\Debug\netstandard2.0\Help.csprojAssemblyReference.cache
+S:\Directum\CSharpEducation\Help\obj\Debug\netstandard2.0\Help.AssemblyInfoInputs.cache
+S:\Directum\CSharpEducation\Help\obj\Debug\netstandard2.0\Help.AssemblyInfo.cs
+S:\Directum\CSharpEducation\Help\obj\Debug\netstandard2.0\Help.dll
+S:\Directum\CSharpEducation\Help\obj\Debug\netstandard2.0\Help.pdb
