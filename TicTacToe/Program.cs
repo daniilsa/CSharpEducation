@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace TicTacToe
 {
-    class Program
+    internal class Program
     {
         /// <summary>
-        /// Метод запуска игры
+        /// Метод запуска игры.
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
