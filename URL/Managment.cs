@@ -17,16 +17,34 @@ namespace URL
     public void Start()
     {
       string url = SetUrl();
-      string pathFile = SetPathFile();
-      string nameFile = SetNameFile();
-      string expansionFile = url.Substring(url.LastIndexOf('.'), url.Length - (url.LastIndexOf('.')));
-      Console.WriteLine($"Расширение файла: {expansionFile}");
+      try
+      {
+        string expansionFile = url.Substring(url.LastIndexOf('.'), url.Length - (url.LastIndexOf('.')));
+        if (expansionFile.Length > 5)
+        {
+          Console.ForegroundColor = ConsoleColor.Red;
+          Console.Write("Ошибка! ");
+          Console.ForegroundColor = ConsoleColor.White;
+          Console.WriteLine("Ссылка не поддерживается!");
+          return;
+        }
+        Console.WriteLine($"Расширение файла: {expansionFile}");
+        string pathFile = SetPathFile();
+        string nameFile = SetNameFile();
+        nameFile += expansionFile;
 
-      nameFile += expansionFile;
+        Thread thread = new Thread(() => new DonloadFile().StartDownload(url, nameFile, pathFile));
+        thread.Start();
+        thread.Join();
+      }
+      catch (Exception)
+      {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.Write("Ошибка! ");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("Ссылка не поддерживается!");
+      }
 
-      Thread thread = new Thread(() => new DonloadFile().StartDownload(url, nameFile, pathFile));
-      thread.Start();
-      thread.Join();
     }
 
     /// <summary>
